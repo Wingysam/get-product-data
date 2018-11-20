@@ -4,14 +4,14 @@
     "request": "^2.88.0",
     "snekfetch": "^4.0.4"
   },
-  "name": "get-name",
-  "version": "0.0.1",
+  "name": "get-product-name",
+  "version": "0.0.2",
   "description": "Get a product's name from its URL",
   "scripts": {
     "test": "mocha"
   },
   "main": "index.js",
-  "repository": "https://gitlab.com/wingysam/get-name",
+  "repository": "https://gitlab.com/wingysam/get-product-name",
   "author": "Wingysam",
   "license": "MIT",
   "private": false,

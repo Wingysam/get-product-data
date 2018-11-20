@@ -81,6 +81,31 @@ describe('Sites', async function() {
   });
 
 
+  describe('Google Express', async function() {
+    describe('Google Chromecast (2nd Generation) - 1080p - Wi-Fi - Black', async function() {
+      let result;
+      before(async function() {
+        result = await getName('https://express.google.com/u/0/product/Google-Chromecast-2nd-Generation-1080p-Wi-Fi-Black/12201320268068482524_12770536777640250214_102760793');
+      });
+    
+      it('should have correct name', async function() {
+        assert.strictEqual(result.name, 'Google Chromecast (2nd Generation) - 1080p - Wi-Fi - Black');
+      });
+    });
+  
+    describe('Nintendo Super Mario Odyssey [Switch Game]', async function() {
+      let result;
+      before(async function() {
+        result = await getName('https://express.GOOGLE.com/u/0/product/Nintendo-Super-Mario-Odyssey-Switch-Game/4699429706850701365_8691361685679756397_125181302');
+      });
+    
+      it('should have correct name', async function() {
+        assert.strictEqual(result.name, 'Nintendo Super Mario Odyssey [Switch Game]');
+      });
+    });
+  });
+
+
   describe('Kohl\'s', async function() {
     describe('Fitbit Ace Kids Activity Tracker', async function() {
       let result;

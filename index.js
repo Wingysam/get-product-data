@@ -29,6 +29,12 @@ const sites = [
   },
   {
     URLs: [
+      /^https:\/\/express\.google\.com\/u\/0\/product\//i
+    ],
+    getter: require('./sites/googleExpress')
+  },
+  {
+    URLs: [
       /^https:\/\/www\.kohls\.com\/product\/prd-/i
     ],
     getter: require('./sites/kohls')

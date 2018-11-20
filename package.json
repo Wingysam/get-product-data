@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.88.0",
+    "snekfetch": "^4.0.4"
+  },
+  "name": "get-name",
+  "version": "0.0.1",
+  "description": "Get a product's name from its URL",
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "index.js",
+  "repository": "https://gitlab.com/wingysam/get-name",
+  "author": "Wingysam",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}

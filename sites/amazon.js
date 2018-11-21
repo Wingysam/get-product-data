@@ -6,7 +6,7 @@ module.exports = async url => {
   if (!res.ok) throw new Error(`Res not ok. Status: ${res.statusCode} ${res.statusText}`);
   let name;
   const $ = cheerio.load(res.body);
-  name = $('#productTitle').text().trim();
+  name = $('#productTitle').text();
   if (name) return { name };
   name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
   if (name) return { name };

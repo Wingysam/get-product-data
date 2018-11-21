@@ -8,5 +8,5 @@ module.exports = async url => {
     return element.textContent;
   });
   await browser.close();
-  return { name: name.trim() };
+  return { name };
 };

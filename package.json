@@ -6,7 +6,7 @@
     "puppeteer": "^1.10.0"
   },
   "name": "get-product-name",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get a product's name from its URL",
   "scripts": {
     "lint": "xo",

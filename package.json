@@ -6,7 +6,7 @@
     "snekfetch": "^4.0.4"
   },
   "name": "get-product-name",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Get a product's name from its URL",
   "scripts": {
     "lint": "xo",

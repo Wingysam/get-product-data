@@ -8,7 +8,8 @@ module.exports = url => {
 const sites = [
   {
     URLs: [
-      /^https:\/\/www\.amazon\.com\//i
+      /^https:\/\/www\.amazon\.com\//i,
+      /^https?:\/\/a\.co\//i
     ],
     getter: require('./sites/amazon')
   },

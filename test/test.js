@@ -81,6 +81,31 @@ describe('Sites', async function() {
   });
 
 
+  describe('GameStop', async function() {
+    describe('Nintendo Switch Console with Neon Blue and Neon Red Joy-Con', async function() {
+      let result;
+      before(async function() {
+        result = await getName('https://www.gamestop.com/nintendo-switch/consoles/nintendo-switch-console-with-neon-blue-and-neon-red-joy-con/153583');
+      });
+    
+      it('should have correct name', async function() {
+        assert.strictEqual(result.name, 'Nintendo Switch Console with Neon Blue and Neon Red Joy-Con');
+      });
+    });
+  
+    describe('Seagate 2TB Game Drive for PS4', async function() {
+      let result;
+      before(async function() {
+        result = await getName('https://www.gamestop.com/ps4/accessories/seagate-2tb-game-drive-for-ps4/151885');
+      });
+    
+      it('should have correct name', async function() {
+        assert.strictEqual(result.name, 'Seagate 2TB Game Drive for PS4');
+      });
+    });
+  });
+
+
   describe('Google Express', async function() {
     describe('Google Chromecast (2nd Generation) - 1080p - Wi-Fi - Black', async function() {
       let result;

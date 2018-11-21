@@ -29,6 +29,12 @@ const sites = [
   },
   {
     URLs: [
+      /^https:\/\/www\.gamestop\.com\//i
+    ],
+    getter: require('./sites/gameStop')
+  },
+  {
+    URLs: [
       /^https:\/\/express\.google\.com\/u\/0\/product\//i
     ],
     getter: require('./sites/googleExpress')

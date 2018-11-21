@@ -25,6 +25,7 @@
   "xo": {
     "space": 2,
     "rules": {
+      "no-await-in-loop": "off",
       "curly": [
         "warn",
         "multi"

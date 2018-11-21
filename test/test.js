@@ -5,6 +5,7 @@ const tests = require('./testCases');
 describe('Sites', function () {
   this.slow(5000);
   this.timeout(30000);
+  this.retries(1);
 
   tests.forEach(test => {
     describe(test.name, function () {

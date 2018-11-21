@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "puppeteer": "^1.10.0",
-    "request": "^2.88.0",
-    "snekfetch": "^4.0.4"
+    "https-proxy-agent": "^2.2.1",
+    "node-fetch": "^2.3.0",
+    "puppeteer": "^1.10.0"
   },
   "name": "get-product-name",
   "version": "0.1.0",

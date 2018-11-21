@@ -12,7 +12,7 @@ module.exports = url => {
       if (name) return resolve({ name });
       name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
       if (name) return resolve({ name });
-      return reject(new Error('Could not find product. Invalid URL?'))
-    })
+      return reject(new Error('Could not find product. Invalid URL?'));
+    });
   });
 };

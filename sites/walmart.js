@@ -9,7 +9,7 @@ module.exports = url => {
       const $ = cheerio.load(body);
       const name = $('h1.prod-ProductTitle').attr().content;
       if (name) return resolve({ name });
-      else return reject(new Error('Could not find product. Invalid URL?'))
-    })
+      return reject(new Error('Could not find product. Invalid URL?'));
+    });
   });
 };

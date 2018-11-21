@@ -1,11 +1,8 @@
-module.exports = async url => {
-  for (let i = 0; i < sites.length; i++) {
-    for (let j = 0; j < sites[i].URLs.length; j++) {
-      if (sites[i].URLs[j].test(url)) {
-        return await sites[i].getter(url);
-      }
-    }
-  }
+module.exports = url => {
+  for (let i = 0; i < sites.length; i++)
+    for (let j = 0; j < sites[i].URLs.length; j++)
+      if (sites[i].URLs[j].test(url))
+        return sites[i].getter(url);
 };
 
 const sites = [

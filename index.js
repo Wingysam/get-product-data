@@ -11,38 +11,38 @@ module.exports = async (url, proxy) => {
 const sites = [
   {
     URLs: [
-      /^https:\/\/www\.amazon\.com\//i,
-      /^https?:\/\/a\.co\//i
+      /^https:\/\/www\.amazon\.com\/([a-z0-9-]*\/)?dp\/[a-z0-9]*\/?.*$/i,
+      /^https?:\/\/a\.co\/.\/[a-z0-9]*\/? *$/i
     ],
     getter: require('./sites/amazon')
   },
   {
     URLs: [
-      /^https:\/\/www\.bestbuy\.com\/site\//i
+      /^https:\/\/www\.bestbuy\.com\/site\/[a-z0-9-]*\/\d*\.p\/?(\?skuId=\d*)?\/?$/i
     ],
     getter: require('./sites/bestbuy')
   },
   {
     URLs: [
-      /^https:\/\/www\.christmastreeshops\.com\/[a-z0-9-]*\/p\/\d*$/i
+      /^https:\/\/www\.christmastreeshops\.com\/[a-z0-9-]*\/p\/\d*\/?$/i
     ],
     getter: require('./sites/christmasTreeShopsAndThat')
   },
   {
     URLs: [
-      /^https:\/\/www\.ebay\.com\/itm\//i
+      /^https:\/\/www\.ebay\.com\/(itm|p)\/[a-z0-9-]*\/\d*\/?(\?.*)?$/i
     ],
     getter: require('./sites/ebay')
   },
   {
     URLs: [
-      /^https:\/\/www\.gamestop\.com\//i
+      /^https:\/\/www\.gamestop\.com\/[a-z0-9-]*\/([a-z0-9-]*\/)?[a-z0-9-]*\/\d*\/?$/i
     ],
     getter: require('./sites/gameStop')
   },
   {
     URLs: [
-      /^https:\/\/express\.google\.com\/u\/0\/product\//i
+      /^https:\/\/express\.google\.com\/u\/0\/product\/([a-z0-9-]*\/)?\w*\/?(\?.*)?$/i
     ],
     getter: require('./sites/googleExpress')
   },
@@ -54,31 +54,31 @@ const sites = [
   },
   {
     URLs: [
-      /^https:\/\/www\.kohls\.com\/product\/prd-/i
+      /^https:\/\/www\.kohls\.com\/product\/prd-\d*\/?([a-z0-9-]*\.jsp)?\/?(\?.*)?$/i
     ],
     getter: require('./sites/kohls')
   },
   {
     URLs: [
-      /^https:\/\/www\.macys\.com\/shop\/product\//i
+      /^https:\/\/www\.macys\.com\/shop\/product\/[a-z0-9-]*\/?(\?.*)?$/i
     ],
     getter: require('./sites/macys')
   },
   {
     URLs: [
-      /^https:\/\/www\.newegg\.com\/Product\/Product\.aspx\?Item=/i
+      /^https:\/\/www\.newegg\.com\/Product\/Product\.aspx\?Item=[a-z0-9](&.*)?\/?/i
     ],
     getter: require('./sites/newegg')
   },
   {
     URLs: [
-      /^https:\/\/www\.target\.com\/p\//i
+      /^https:\/\/www\.target\.com\/p\/([a-z0-9-]*\/)?-\/A-\d*(\?.*)?$/i
     ],
     getter: require('./sites/target')
   },
   {
     URLs: [
-      /^https:\/\/www\.walmart\.com\/ip\//i
+      /^https:\/\/www\.walmart\.com\/ip\/[a-z0-9-]*\/\d*(\?.*)?\/?$/i
     ],
     getter: require('./sites/walmart')
   }

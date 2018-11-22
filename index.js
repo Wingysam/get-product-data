@@ -24,6 +24,12 @@ const sites = [
   },
   {
     URLs: [
+      /^https:\/\/www\.christmastreeshops\.com\/[a-z0-9-]*\/p\/[0-9]*$/i
+    ],
+    getter: require('./sites/christmasTreeShopsAndThat')
+  },
+  {
+    URLs: [
       /^https:\/\/www\.ebay\.com\/itm\//i
     ],
     getter: require('./sites/ebay')

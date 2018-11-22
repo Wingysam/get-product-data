@@ -24,7 +24,7 @@ const sites = [
   },
   {
     URLs: [
-      /^https:\/\/www\.christmastreeshops\.com\/[a-z0-9-]*\/p\/[0-9]*$/i
+      /^https:\/\/www\.christmastreeshops\.com\/[a-z0-9-]*\/p\/\d*$/i
     ],
     getter: require('./sites/christmasTreeShopsAndThat')
   },
@@ -45,6 +45,12 @@ const sites = [
       /^https:\/\/express\.google\.com\/u\/0\/product\//i
     ],
     getter: require('./sites/googleExpress')
+  },
+  {
+    URLs: [
+      /^https:\/\/www\.kitchenandcompany\.com\/[a-z0-9-]*\/?$/i
+    ],
+    getter: require('./sites/kitchenAndCompany')
   },
   {
     URLs: [

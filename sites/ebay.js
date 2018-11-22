@@ -8,7 +8,7 @@ module.exports = async (url, proxy) => {
   const res = await fetch(url, options);
   if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
   const $ = cheerio.load(await res.text());
-  const name = $('#sc_email').attr('etafsharetitle');
+  const name = $('title').text().replace(/ \| eBay$/, '');
   if (name) return { name };
   throw new Error('Could not find product. Invalid URL?');
 };

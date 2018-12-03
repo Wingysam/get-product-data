@@ -78,7 +78,7 @@ const sites = [
   },
   {
     URLs: [
-      /^https:\/\/www\.walmart\.com\/ip\/[a-z0-9-]*\/\d*(\?.*)?\/?$/i
+      /^https?:\/\/www\.walmart\.com\/ip\/[a-z0-9-]*\/\d*(\?.*)?\/?$/i
     ],
     getter: require('./sites/walmart')
   }

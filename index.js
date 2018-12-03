@@ -42,7 +42,7 @@ const sites = [
   },
   {
     URLs: [
-      /^https:\/\/express\.google\.com\/u\/0\/product\/([a-z0-9-]*\/)?\w*\/?(\?.*)?$/i
+      /^https:\/\/express\.google\.com(\/u\/0)?\/product\/([a-z0-9-]*\/)?\w*\/?(\?.*)?$/i
     ],
     getter: require('./sites/googleExpress')
   },

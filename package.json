@@ -10,7 +10,7 @@
   "description": "Get a product's name from its URL",
   "scripts": {
     "lint": "xo",
-    "test": "mocha"
+    "test": "mocha --bail"
   },
   "main": "index.js",
   "repository": "https://gitlab.com/wingysam/get-product-name",

@@ -8,7 +8,7 @@ module.exports = async (url, proxy) => {
   const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
   await page.goto(url);
-  const name = await page.$eval('gx-product-title > h1.title', element => {
+  const name = await page.$eval('h1.title', element => {
     return element.textContent;
   });
   await browser.close();

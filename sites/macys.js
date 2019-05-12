@@ -14,7 +14,7 @@ module.exports = async (url, proxy) => {
   const res = await fetch(url, options);
   if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
   const $ = cheerio.load(await res.text());
-  const name = `${$('[data-auto="product-brand"]').text().trim()} ${$('[data-auto="product-name"]').text().trim()}`;
+  const name = `${$('[data-auto="product-brand"]').first().text().trim()} ${$('[data-auto="product-name"]').first().text().trim()}`;
   if (name) return { name };
   throw new Error('Could not find product. Invalid URL?');
 };

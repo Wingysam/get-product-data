@@ -1,6 +1,17 @@
+const { read } = require('yaml-import');
 const { assert } = require('chai');
 const getName = require('../'); // eslint-disable-line unicorn/import-index
-const tests = require('./testCases');
+const path = require('path');
+
+const tests = Object.entries(
+  read(path.resolve('./test/testCases.yml'))
+)
+  .map(([name, cases]) => {
+    return {
+      name,
+      cases
+    }
+  });
 
 describe('Sites', function () {
   this.slow(5000);

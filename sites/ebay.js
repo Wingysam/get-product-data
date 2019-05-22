@@ -9,7 +9,7 @@ module.exports = {
   ],
   testCases: [
     {
-      name: 'Nest Learning Thermostat 3rd Generation, Works with Google Home and Amazon Alexa',
+      name: 'Nest Learning Thermostat 3rd Generation, Works with Google Home & Amazon Alexa',
       url: 'https://www.ebay.com/itm/Nest-Learning-Thermostat-3rd-Generation-Works-with-Google-Home-and-Amazon-Alexa/223103414932'
     },
     {

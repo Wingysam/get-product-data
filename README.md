@@ -15,3 +15,17 @@ async function main() {
 
 main();
 ```
+
+# Supported Sites
+* Amazon
+* Best Buy
+* Christmas Tree Stops & That!
+* eBay
+* GameStop
+* Google Express
+* Kitchen & Company
+* Kohl's
+* Macy's
+* Newegg
+* Target
+* Walmart

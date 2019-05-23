@@ -15,7 +15,7 @@ describe('Sites', function () {
         describe(testCase.name, function () {
           let result;
           before(async function () {
-            result = await getName(testCase.url);
+            result = await getName(testCase.url, process.env.PROXY);
           });
           it('should have correct name', function () {
             assert.strictEqual(result.name, testCase.name);

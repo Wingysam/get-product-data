@@ -9,7 +9,7 @@ module.exports = {
   ],
   testCases: [
     {
-      name: 'Nintendo Switch Console with Neon Blue and Neon Red Joy-Con',
+      name: 'Nintendo Switch Console with Neon Blue and Red Joy-Con',
       url: 'https://www.gamestop.com/nintendo-switch/consoles/nintendo-switch-console-with-neon-blue-and-neon-red-joy-con/153583'
     },
     {

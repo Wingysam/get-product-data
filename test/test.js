@@ -17,6 +17,10 @@ describe('Sites', function () {
           before(async function () {
             result = await getName(testCase.url, process.env.PROXY);
           });
+          
+          it('should pass regex', function () {
+            assert.exists(test.URLs.find(regex => regex.test(testCase.url)))
+          })
           it('should have correct name', function () {
             assert.strictEqual(result.name, testCase.name);
           });

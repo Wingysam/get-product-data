@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 module.exports = {
   name: 'GameStop',
   URLs: [
-    /^https:\/\/www\.gamestop\.com\/[a-z0-9-]*\/([a-z0-9-]*\/)?[a-z0-9-]*\/\d*\/?$/i
+    /^https:\/\/www\.gamestop\.com\/.*$/i
   ],
   testCases: [
     {
@@ -27,7 +27,7 @@ module.exports = {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
     const $ = cheerio.load(await res.text());
-    const name = $('meta[property="og:title"]').attr('content');
+    const name = $('span.product-name').text();
     if (name) return { name };
     throw new Error('Could not find product. Invalid URL?');
   }

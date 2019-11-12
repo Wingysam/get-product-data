@@ -22,10 +22,14 @@ main();
 * Christmas Tree Stops & That!
 * eBay
 * GameStop
-* Google Express
+* GOAT
+* Google Shopping
+* IKEA
 * Kitchen & Company
 * Kohl's
 * Macy's
 * Newegg
+* PCPartPicker
 * Target
+* Teespring
 * Walmart

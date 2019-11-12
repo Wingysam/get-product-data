@@ -11,6 +11,15 @@ describe('Sites', function () {
 
   tests.forEach(test => {
     describe(test.name, function () {
+      describe('RegExes', function () {
+        for (const regex of test.URLs) {
+          describe(regex.toString(), function () {
+            it('should be /i', function () {
+              assert.isTrue(regex.flags.includes('i'))
+            })
+          })
+        }
+      })
       test.testCases.forEach(testCase => {
         describe(testCase.name, function () {
           let result;
@@ -18,15 +27,6 @@ describe('Sites', function () {
             result = await getName(testCase.url, process.env.PROXY);
           });
           
-          describe('regexes', function () {
-            for (const regex of test.URLs) {
-              describe(regex.toString(), function () {
-                it('should be /i', function () {
-                  assert.isTrue(regex.flags.includes('i'))
-                })
-              })
-            }
-          })
           it('should pass regex', function () {
             assert.exists(test.URLs.find(regex => regex.test(testCase.url)))
           })

@@ -24,7 +24,7 @@ module.exports = {
       url: 'https://pcpartpicker.com/guide/R3G323/great-amd-gamingstreaming-build'
     },
     {
-      name: 'Updated Casual Gaming Rig',
+      name: 'Updated  Clean Gaming Rig',
       url: 'https://pcpartpicker.com/b/JWgwrH'
     }
   ],

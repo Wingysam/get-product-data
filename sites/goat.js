@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 module.exports = {
-  name: 'Goat',
+  name: 'GOAT',
   URLs: [
     /^https:\/\/www.goat.com\/.*\/.*$/i
   ],
@@ -20,7 +20,7 @@ module.exports = {
   async getter (url, proxy) {
     const options = {
       headers: {
-        'User-Agent': 'get-product-name'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36'
       }
     };
     if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "^1.0.0-rc.3",
     "https-proxy-agent": "^2.2.1",
     "node-fetch": "^2.3.0"
   },
@@ -9,7 +9,8 @@
   "description": "Get a product's name from its URL",
   "scripts": {
     "lint": "xo",
-    "test": "mocha --bail"
+    "test": "mocha --bail",
+    "testfor": "mocha --bail --grep"
   },
   "main": "index.js",
   "repository": "https://gitlab.com/wingysam/get-product-name",

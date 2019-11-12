@@ -9,11 +9,11 @@ module.exports = {
   ],
   testCases: [
     {
-      name: 'Nintendo Switch Console with Neon Blue and Red Joy-Con',
+      name: 'Nintendo Switch with Neon Blue and Neon Red Joy-Con',
       url: 'https://www.gamestop.com/nintendo-switch/consoles/nintendo-switch-console-with-neon-blue-and-neon-red-joy-con/153583'
     },
     {
-      name: 'Seagate 2TB Game Drive for PS4',
+      name: 'PlayStation 4 Game Drive External Hard Drive 2TB',
       url: 'https://www.GAMESTOP.com/ps4/accessories/seagate-2tb-game-drive-for-ps4/151885'
     }
   ],

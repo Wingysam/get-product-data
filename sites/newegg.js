@@ -23,7 +23,8 @@ module.exports = {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
     const $ = cheerio.load(await res.text());
-    const name = $('h1#grpDescrip_h > span[itemprop="name"]').text();
+    const title = $('title').text();
+    const name = title.substring(0, title.indexOf(' - Newegg.com'));
     if (name) return { name };
     throw new Error('Could not find product. Invalid URL?');
   }

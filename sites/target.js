@@ -9,8 +9,8 @@ module.exports = {
   ],
   testCases: [
     {
-      name: "Girls' 2pc Long Sleeve How To Draw A Panda Graphic Pajama Set - Cat & Jack™ Pink",
-      url: 'https://www.target.com/p/girls-2pc-long-sleeve-how-to-draw-a-panda-graphic-pajama-set-cat-jack-153-pink/-/A-53593065?preselect=53511057#lnk=sametab'
+      name: "Disney Gift Card eGift (Email Delivery)",
+      url: 'https://www.target.com/p/disney-gift-card-egift-email-delivery/-/A-54191074'
     },
     {
       name: 'Xbox One X 1 TB Console - Black',

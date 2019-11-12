@@ -24,8 +24,8 @@ module.exports = {
       url: 'https://pcpartpicker.com/guide/R3G323/great-amd-gamingstreaming-build'
     },
     {
-      name: 'Emerald Archer',
-      url: 'https://pcpartpicker.com/b/vkMZxr'
+      name: 'Updated Casual Gaming Rig',
+      url: 'https://pcpartpicker.com/b/JWgwrH'
     }
   ],
   async getter (url, proxy) {

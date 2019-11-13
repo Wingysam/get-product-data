@@ -27,6 +27,7 @@ module.exports = {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
     const $ = cheerio.load(await res.text());
+    if ($('title').text() === 'Access to this page has been denied.') throw new Error('Got CAPTCHA')
     const data = JSON.parse($('script[type="application/ld+json"]').html());
     const name = data.name
     if (name) return { name };

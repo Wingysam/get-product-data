@@ -41,6 +41,8 @@ module.exports = {
     if (name) return { name };
     name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
     if (name) return { name };
+    // I think Amazon uses RNG or something to decide if you get a CAPTCHA.
+    if ($('form[action="/errors/validateCaptcha"]')) return this.getter(url, proxy)
     throw new Error('Could not find product. Invalid URL?');
   }
 }

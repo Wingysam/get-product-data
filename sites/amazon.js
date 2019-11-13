@@ -5,7 +5,8 @@ const cheerio = require('cheerio');
 module.exports = {
   name: 'Amazon',
   URLs: [
-    /^https:\/\/www\.amazon\.com\/([a-z0-9-]*\/)?dp\/[a-z0-9]*\/?.*$/i,
+    /^https?:\/\/((www|smile)\.)?amazon\.(com|ca|cn|fr|de|co\.uk)\/([a-z0-9-]*\/)?(d|g)p\/[a-z0-9]*\/?.*$/i,
+    /^https:\/\/.*\/dp\/.*$/i,
     /^https?:\/\/a\.co\/.\/[a-z0-9]*\/? *$/i
   ],
   testCases: [
@@ -24,6 +25,34 @@ module.exports = {
     {
       name: 'Seagate Barracuda 4TB Internal Hard Drive HDD – 3.5 Inch SATA 6 Gb/s 5400 RPM 256MB Cache for Computer Desktop PC Laptop (ST4000DM004)',
       url: 'http://A.co/d/3Ed7AM1'
+    },
+    {
+      name: 'Fluent Forever: How to Learn Any Language Fast and Never Forget It',
+      url: 'https://smile.amazon.com/Fluent-Forever-Learn-Language-Forget/dp/0385348118/ref=sr_1_2?keywords=languages&qid=1573661891&smid=ATVPDKIKX0DER&sr=8-2'
+    },
+    {
+      name: 'KitchenAid KSM150PSAQ Artisan Series Stand Mixer with Pouring Shield, Aqua Sky, 5 Quart',
+      url: 'https://www.amazon.ca/gp/product/B005PMEHBG/ref=s9_acss_bw_cg_test_1a1_w?pf_rd_m=A1IM4EOPHS76S7&pf_rd_s=merchandised-search-2&pf_rd_r=TENVD03KH8MGBFCX8DVJ&pf_rd_t=101&pf_rd_p=aec53367-fe2b-44c0-9980-052d9245050b&pf_rd_i=20510796011'
+    },
+    {
+      name: '神秘瞬间 | Ylang Ylang 香精油 - 100ml',
+      url: 'https://www.amazon.cn/dp/B0062J987Y?ref_=Oct_DLandingSV2_PC_aeaf0f6a_0&smid=A3TEGLC21NOO5Y'
+    },
+    {
+      name: 'Ordinateur de bureau HP Elite 8300 SFF - Intel Core i5-3470 @ 3,20 GHz - 4 Go DDR3 RAM - 250 Go HDD - Lecteur DVD - Windows 10 PRO 64 bits préinstallé - Garantie 12 mois - (Reconditionné)',
+      url: 'https://www.amazon.fr/gp/product/B072HFFYLY/ref=s9_acsd_al_bw_c_x_1_w?pf_rd_m=A1X6FK5RDHNB96&pf_rd_s=merchandised-search-5&pf_rd_r=FJHXSPN9Y7E2HC9330BS&pf_rd_t=101&pf_rd_p=5893066b-6531-4786-8bdc-89f2c73b08f3&pf_rd_i=17327958031'
+    },
+    {
+      name: 'JAGETRADE 1Pc Mini Bamboo Saucer Succulent Planter Pot Flower Container Bonsai Tray Holder',
+      url: 'https://www.amazon.de/dp/B07M5WQQWJ/ref=bbp_bb_01a411_st_HCHe_w_0?language=de_DE&psc=1&smid=A318R3EKXK1CC6'
+    },
+    {
+      name: 'Nintendo Switch 本体 (ニンテンドースイッチ) Joy-Con(L) ネオンブルー/(R) ネオンレッド(バッテリー持続時間が長くなったモデル)',
+      url: 'https://www.amazon.co.jp/Nintendo-Switch-%E3%83%8B%E3%83%B3%E3%83%86%E3%83%B3%E3%83%89%E3%83%BC%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81-%E3%83%8D%E3%82%AA%E3%83%B3%E3%83%96%E3%83%AB%E3%83%BC-%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%83%BC%E6%8C%81%E7%B6%9A%E6%99%82%E9%96%93%E3%81%8C%E9%95%B7%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%83%A2%E3%83%87%E3%83%AB/dp/B07WXL5YPW?pf_rd_p=cc17c435-35f6-5801-aeae-5c1f4efad58f&pf_rd_r=ZWHMBEX0G0J3SMQREZJ1&pd_rd_wg=nFk5E&ref_=pd_gw_ri&pd_rd_w=DZ9JX&pd_rd_r=7651edd6-f314-4af9-8e76-4f37cc17ab19'
+    },
+    {
+      name: 'Echo Dot (3rd Gen) - Smart speaker with Alexa - Charcoal Fabric',
+      url: 'https://www.amazon.co.uk/dp/B07PJV3JPR/ref=gw_uk_desk_h1_aucc_cr_TPR15_q4_vac_1119?pf_rd_p=87afd799-1703-462f-b5c5-76c1bef4cec3&pf_rd_r=RM025RV2F7EPFKR29MFA'
     }
   ],
   async getter (url, proxy) {

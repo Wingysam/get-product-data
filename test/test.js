@@ -30,9 +30,15 @@ describe('Sites', function () {
           it('should pass regex', function () {
             assert.exists(test.URLs.find(regex => regex.test(testCase.url)))
           })
-          it('should have correct name', function () {
-            assert.strictEqual(result.name, testCase.name);
-          });
+          it('should have correct name', function () {          
+            assert.strictEqual(result.name, testCase.name)
+          })
+          it('should have correct price', function () {          
+            assert.strictEqual(result.price, testCase.price)
+          })
+          it('should have correct image', function () {          
+            assert.strictEqual(result.image, testCase.image)
+          })
         });
       });
     });

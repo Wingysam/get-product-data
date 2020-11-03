@@ -24,7 +24,7 @@ module.exports = {
     },
     {
       name: 'Echo Dot (2nd Generation) - Smart speaker with Alexa - Black',
-      price: undefined,
+      price: 'Currently unavailable.',
       image: 'https://images-na.ssl-images-amazon.com/images/I/61U8ScEenhL._AC_SX679_.jpg',
       url: 'http://a.co/d/7WpDUNl '
     },
@@ -66,7 +66,7 @@ module.exports = {
     },
     {
       name: 'Nintendo Switch 本体 (ニンテンドースイッチ) Joy-Con(L) ネオンブルー/(R) ネオンレッド',
-      price: '￥39,800',
+      price: '￥40,800',
       image: 'https://images-na.ssl-images-amazon.com/images/I/61gtkPQtgrL._AC_SX679_.jpg',
       url: 'https://www.amazon.co.jp/Nintendo-Switch-%E3%83%8B%E3%83%B3%E3%83%86%E3%83%B3%E3%83%89%E3%83%BC%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81-%E3%83%8D%E3%82%AA%E3%83%B3%E3%83%96%E3%83%AB%E3%83%BC-%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%83%BC%E6%8C%81%E7%B6%9A%E6%99%82%E9%96%93%E3%81%8C%E9%95%B7%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%83%A2%E3%83%87%E3%83%AB/dp/B07WXL5YPW?pf_rd_p=cc17c435-35f6-5801-aeae-5c1f4efad58f&pf_rd_r=ZWHMBEX0G0J3SMQREZJ1&pd_rd_wg=nFk5E&ref_=pd_gw_ri&pd_rd_w=DZ9JX&pd_rd_r=7651edd6-f314-4af9-8e76-4f37cc17ab19'
     },

@@ -9,11 +9,15 @@ module.exports = {
   ],
   testCases: [
     {
-      name: 'MALM Bed frame, high, black-brown, Luröy, Queen',
+      name: 'MALM Bed frame, high - black-brown/Luröy Queen',
+      price: '199',
+      image: 'https://www.ikea.com/us/en/images/products/malm-bed-frame-high-black-brown-luroey__0638608_PE699032_S5.JPG',
       url: 'https://www.ikea.com/us/en/p/malm-bed-frame-high-black-brown-luroey-s69009475/'
     },
     {
-      name: 'BUSKBO Armchair, rattan, Djupvik white',
+      name: 'BUSKBO Armchair - rattan/Djupvik white',
+      price: '169',
+      image: 'https://www.ikea.com/us/en/images/products/buskbo-armchair-rattan-djupvik-white__0700959_PE723853_S5.JPG',
       url: 'https://www.ikea.com/us/en/p/buskbo-armchair-rattan-djupvik-white-s69299012/'
     }
   ],
@@ -23,9 +27,13 @@ module.exports = {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
     const $ = cheerio.load(await res.text());
-    // If you can make this next line better, please open a PR :)
-    const name = `${$('h2.product-pip__product-heading > span.product-pip__name').text()} ${$('.range__text-rtl').text().trim().split('\n')[0]}`;
-    if (name) return { name };
-    throw new Error('Could not find product. Invalid URL?');
+    let name, price, image
+    const data = JSON.parse($('script[type="application/ld+json"]').last().html())
+
+    name = data.name
+    price = data.offers.price
+    image = data.image[0]
+
+    return { name, price, image }
   }
 }

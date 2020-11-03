@@ -5,16 +5,20 @@ const cheerio = require('cheerio');
 module.exports = {
   name: 'GameStop',
   URLs: [
-    /^https:\/\/www\.gamestop\.com\/.*$/i
+    /^https:\/\/(www\.)?gamestop\.com\/.*$/i
   ],
   testCases: [
     {
       name: 'Nintendo Switch with Neon Blue and Neon Red Joy-Con',
+      price: '269.99',
+      image: 'https://media.gamestop.com/i/gamestop/10141887',
       url: 'https://www.gamestop.com/nintendo-switch/consoles/nintendo-switch-console-with-neon-blue-and-neon-red-joy-con/153583'
     },
     {
-      name: 'PlayStation 4 Game Drive External Hard Drive 2TB',
-      url: 'https://www.GAMESTOP.com/ps4/accessories/seagate-2tb-game-drive-for-ps4/151885'
+      name: 'Xbox Series X',
+      price: '499.99',
+      image: 'https://media.gamestop.com/i/gamestop/11108371',
+      url: 'https://GAMESTOP.com/video-games/xbox-series-x/consoles/products/xbox-series-x/11108371.html'
     }
   ],
   async getter (url, proxy) {
@@ -26,9 +30,15 @@ module.exports = {
     if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    const name = $('span.product-name').text();
-    if (name) return { name };
-    throw new Error('Could not find product. Invalid URL?');
+    const html = await res.text()
+    let name, price, image
+
+    const data = JSON.parse(html.split('<script type="application/ld+json">')[1].split('</script>')[0])
+    
+    name = data.name
+    price = data.offers[0]?.price
+    image = `https://media.gamestop.com/i/gamestop/${data.url.split('/').reverse()[0].replace('.html', '')}`
+
+    return { name, price, image }
   }
 }

@@ -2,6 +2,8 @@ const HttpsProxyAgent = require('https-proxy-agent');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
+const { og } = require('../util')
+
 module.exports = {
   name: 'PCPartPicker',
   URLs: [
@@ -13,19 +15,27 @@ module.exports = {
   testCases: [
     {
       name: 'Custom PC',
+      price: '$344.81',
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/ad2e56d88c77de3053dcc5dada363f58.256p.jpg',
       url: 'https://pcpartpicker.com/list/vcrxkd'
     },
     {
       name: 'Very Cheap APU Gaming PC',
+      price: '$365.24',
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/ad2e56d88c77de3053dcc5dada363f58.256p.jpg',
       url: 'https://pcpartpicker.com/user/Wingysam/saved/GXjbXL'
     },
     {
       name: 'Great AMD Gaming/Streaming Build',
+      price: '$1002.06',
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/product/c7baf2c9c9cc15ae23adb24c2f4316fc.256p.jpg',
       url: 'https://pcpartpicker.com/guide/R3G323/great-amd-gamingstreaming-build'
     },
     {
-      name: 'Updated  Clean Gaming Rig',
-      url: 'https://pcpartpicker.com/b/JWgwrH'
+      name: 'First Gaming Rig!',
+      price: '$1113.82',
+      image: 'https://cdna.pcpartpicker.com/static/forever/images/userbuild/312904.7316f03d975a4f8dcc9e5b8adf2629e3.jpg',
+      url: 'https://pcpartpicker.com/b/b6BZxr'
     }
   ],
   async getter (url, proxy) {
@@ -37,15 +47,21 @@ module.exports = {
     if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    let name;
     const $ = cheerio.load(await res.text());
+    let name, price, image
+
     name = $('.pageTitle').text();
     if (name) {
       if (name === 'System Builder') name = 'Custom PC';
-      return { name };
     }
-    name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
-    if (name) return { name };
-    throw new Error('Could not find product. Invalid URL?');
+    if (!name) name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
+
+    price = $('.td__price').last().text().trim()
+
+    image = og($, 'image')
+    if (!image) image = $('.td__image > a > img').attr('src')
+    if (image) image = `https:${image}`
+
+    return { name, price, image }
   }
 }

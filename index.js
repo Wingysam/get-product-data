@@ -1,3 +1,6 @@
+const sites = require('./sitesArray')
+
+
 module.exports = async (url, proxy) => {
   for (let i = 0; i < sites.length; i++)
     for (let j = 0; j < sites[i].URLs.length; j++)
@@ -8,4 +11,4 @@ module.exports = async (url, proxy) => {
       }
 };
 
-const sites = require('./sitesArray');
+module.exports.sites = sites

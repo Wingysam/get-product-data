@@ -33,3 +33,4 @@ main();
 * Target
 * Teespring
 * Walmart
+* Wish

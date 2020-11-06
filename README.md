@@ -31,6 +31,7 @@ main();
 * Macy's
 * Newegg
 * PCPartPicker
+* Steam
 * Target
 * Teespring
 * Walmart

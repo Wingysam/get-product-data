@@ -37,3 +37,10 @@ main();
 * Teespring
 * Walmart
 * Wish
+
+# *Not* Supported Sites
+These sites have been considered, but not implemented.
+
+Site | Reason
+---- | ------
+K-Mart, Sears (Same site) | Requires complicated series of requests to extract data

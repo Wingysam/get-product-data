@@ -19,6 +19,7 @@ main();
 # Supported Sites
 * AliExpress
 * Amazon
+* Bergdorf Goodman
 * Best Buy
 * Bing - Shopping
 * Christmas Tree Stops & That!

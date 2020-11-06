@@ -29,13 +29,14 @@ module.exports = {
     const res = await fetch(url, options)
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
 
-    const $ = cheerio.load(await res.text())
+    const html = await res.text()
+    const $ = cheerio.load(html)
 
-    const name = $('').text().trim()
+    const name = $('').first().text().trim()
 
-    const price = $('').text().trim()
+    const price = $('').first().text().trim()
 
-    const image = $('').text().trim()
+    const image = $('').first().attr('src')
 
     return { name, price, image }
   }

@@ -20,6 +20,7 @@ main();
 * AliExpress
 * Amazon
 * Best Buy
+* Bing - Shopping
 * Christmas Tree Stops & That!
 * eBay
 * GameStop

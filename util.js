@@ -21,7 +21,7 @@ module.exports.sitesArray = () => {
   const files = fs.readdirSync(path.join(__dirname, 'sites'))
 
   return files.map(filename => {
-    if (!filename.endsWith('.js')) return false
+    if (!filename.endsWith('.js') || filename.startsWith('_')) return false
     return require(
       path.join(
         __dirname,

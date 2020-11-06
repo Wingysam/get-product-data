@@ -30,6 +30,7 @@ main();
 * Kitchen & Company
 * Kohl's
 * Macy's
+* Neiman Marcus
 * Newegg
 * PCPartPicker
 * Steam

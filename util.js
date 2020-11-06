@@ -1,5 +1,5 @@
 /**
- *
+ * Get OpenGraph data
  * @param {*} $ Cheerio instance
  * @param  {...string} keys NOT SANITIZED
  */

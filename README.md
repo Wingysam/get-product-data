@@ -17,6 +17,7 @@ main();
 ```
 
 # Supported Sites
+* AliExpress
 * Amazon
 * Best Buy
 * Christmas Tree Stops & That!

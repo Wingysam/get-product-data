@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'Google Shopping',
@@ -23,11 +25,11 @@ module.exports = {
     }
   ],
   async getter (url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
 
     const name = $('.fbrNcd').text() // hackery, probably will break but kbye
 

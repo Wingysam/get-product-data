@@ -1,5 +1,5 @@
+const cheerio = require('cheerio')
 const { spawn } = require('child-process-promise')
-const cheerio = require('cheerio');
 
 module.exports = {
   name: 'BestBuy',
@@ -25,14 +25,17 @@ module.exports = {
     // All node HTTP libs hang here, but curl doesn't.
     // I have spent 3 hours debugging, and have given up.
     // Here be dragons~
-    const { stdout: html } = await spawn('curl', [ url, '-LH', 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0' ], { env: {
-      http_proxy: proxy,
-      https_proxy: proxy
-    }, capture: [
-      'stdout'
-    ] })
-    
-    const $ = cheerio.load(html);
+    const { stdout: html } = await spawn('curl', [url, '-LH', 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0'], {
+      env: {
+        http_proxy: proxy,
+        https_proxy: proxy
+      },
+      capture: [
+        'stdout'
+      ]
+    })
+
+    const $ = cheerio.load(html)
     let name, price, image
 
     if (!name) name = $('.sku-title > h1').text().trim()

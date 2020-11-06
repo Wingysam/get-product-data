@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'IKEA',
@@ -21,18 +23,17 @@ module.exports = {
       url: 'https://www.ikea.com/us/en/p/buskbo-armchair-rattan-djupvik-white-s69299012/'
     }
   ],
-  async getter(url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    let name, price, image
+  async getter (url, proxy) {
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
     const data = JSON.parse($('script[type="application/ld+json"]').last().html())
 
-    name = data.name
-    price = data.offers.price
-    image = data.image[0]
+    const name = data.name
+    const price = data.offers.price
+    const image = data.image[0]
 
     return { name, price, image }
   }

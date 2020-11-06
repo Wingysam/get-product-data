@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 const { og } = require('../util')
 
@@ -9,7 +11,7 @@ module.exports = {
   URLs: [
     /^https:\/\/pcpartpicker\.com\/list\/[a-z0-9]*$/i,
     /^https:\/\/pcpartpicker\.com\/user\/[a-z0-9]*\/saved\/[a-z0-9]*$/i,
-    /^https:\/\/pcpartpicker\.com\/guide\/[a-z0-9]*\/[a-z0-9\-]*$/i,
+    /^https:\/\/pcpartpicker\.com\/guide\/[a-z0-9]*\/[a-z0-9-]*$/i,
     /^https:\/\/pcpartpicker\.com\/b\/[a-z0-9]*$/i
   ],
   testCases: [
@@ -43,22 +45,21 @@ module.exports = {
       headers: {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.88 Safari/537.36 Vivaldi/2.4.1488.36'
       }
-    };
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    let name, price, image
-
-    name = $('.pageTitle').text();
-    if (name) {
-      if (name === 'System Builder') name = 'Custom PC';
     }
-    if (!name) name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text();
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
 
-    price = $('.td__price').last().text().trim()
+    let name = $('.pageTitle').text()
+    if (name) {
+      if (name === 'System Builder') name = 'Custom PC'
+    }
+    if (!name) name = $('div#mobileApplicationSubtitle_feature_div > div#mas-title > div.a-row > span').text()
 
-    image = og($, 'image')
+    const price = $('.td__price').last().text().trim()
+
+    let image = og($, 'image')
     if (!image) image = $('.td__image > a > img').attr('src')
     if (image) image = `https:${image}`
 

@@ -1,5 +1,7 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
+const { URL } = require('url')
+
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'AliExpress',
@@ -21,10 +23,10 @@ module.exports = {
     }
   ],
   async getter (url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
     const html = await res.text()
     const data = JSON.parse(html.split('                            data: ')[1].split(',\n')[0])
     let name, price, image

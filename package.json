@@ -9,7 +9,7 @@
   "version": "1.11.0",
   "description": "Get a product's name from its URL",
   "scripts": {
-    "lint": "xo",
+    "lint": "eslint .",
     "test": "mocha --bail",
     "testfor": "mocha --bail --grep"
   },
@@ -20,37 +20,11 @@
   "private": false,
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "xo": "^0.23.0"
-  },
-  "xo": {
-    "space": 2,
-    "rules": {
-      "no-await-in-loop": "off",
-      "curly": [
-        "warn",
-        "multi"
-      ],
-      "object-curly-spacing": [
-        "warn",
-        "always"
-      ],
-      "unicorn/filename-case": [
-        "on",
-        {
-          "case": "camelCase"
-        }
-      ]
-    },
-    "overrides": [
-      {
-        "files": "test/**/*.js",
-        "rules": {
-          "no-undef": "off",
-          "prefer-arrow-callback": "off",
-          "max-nested-callbacks": "off"
-        }
-      }
-    ]
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "mocha": "^5.2.0"
   }
 }

@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'Amazon',
@@ -82,16 +84,16 @@ module.exports = {
       headers: {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.88 Safari/537.36 Vivaldi/2.4.1488.36'
       }
-    };
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
+    }
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
     const html = await res.text()
-    let name, price, image;
-    const $ = cheerio.load(html);
+    let name, price, image
+    const $ = cheerio.load(html)
 
-    if (!name) name = $('#productTitle').text().trim();
-    if (!name) name = $('h1#mas-atf-product-title > span > span').text().trim();
+    if (!name) name = $('#productTitle').text().trim()
+    if (!name) name = $('h1#mas-atf-product-title > span > span').text().trim()
 
     if (!price) price = $('#priceblock_saleprice').text().trim()
     if (!price) price = $('#priceblock_ourprice').text().trim()
@@ -99,28 +101,30 @@ module.exports = {
     if (!price) price = $('#formats .a-button-inner .a-color-secondary > span').first().text().trim()
 
     try {
-      if (!image) image =
+      if (!image) {
+        image =
         Object.entries(
           JSON.parse(
             $('img#landingImage').attr('data-a-dynamic-image')
           )
         )
-          .sort((a, b) => b[1][0] - a[1][0])
-            [0][0]
-    } catch {}
+          .sort((a, b) => b[1][0] - a[1][0])[0][0]
+      }
+    } catch (_) {}
     try {
       if (!image) image = $('img#js-masrw-main-image').attr('src')
-    } catch {}
+    } catch (_) {}
     try {
-      if (!image) image =
+      if (!image) {
+        image =
         Object.entries(
           JSON.parse(
             $('#main-image-container img').attr('data-a-dynamic-image')
           )
         )
-          .sort((a, b) => b[1][0] - a[1][0])
-            [0][0]
-    } catch {}
+          .sort((a, b) => b[1][0] - a[1][0])[0][0]
+      }
+    } catch (_) {}
 
     // I think Amazon uses RNG or something to decide if you get a CAPTCHA.
     if ($('form[action="/errors/validateCaptcha"]').length) return this.getter(url, proxy)

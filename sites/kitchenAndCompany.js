@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 module.exports = {
   name: 'Kitchen & Company',
@@ -22,16 +24,15 @@ module.exports = {
     }
   ],
   async getter (url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    let name, price, image
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
 
-    name = $('title').text()
-    price = $('.price').first().text().trim()
-    image = $('meta[property="og:image"]').attr('content')
+    const name = $('title').text()
+    const price = $('.price').first().text().trim()
+    const image = $('meta[property="og:image"]').attr('content')
 
     return { name, price, image }
   }

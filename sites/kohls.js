@@ -1,7 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
 
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 module.exports = {
   name: "Kohl's",
   URLs: [
@@ -21,24 +22,23 @@ module.exports = {
       url: 'https://www.KOHLS.com/product/prd-3239600/nintendo-switch-console-joy-con-controller-set-with-bonus-interworks-controller.jsp'
     }
   ],
-  async getter(url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
+  async getter (url, proxy) {
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
     const html = await res.text()
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html)
     let jsData = {}
     try {
       jsData = JSON.parse(html.split('var productV2JsonData = ')[1].split(';</script>')[0])
-    } catch {}
-    let name, price, image
+    } catch (_) {}
 
-    name = $('.product-title').text().trim()
+    const name = $('.product-title').text().trim()
 
-    price = $('meta[itemprop="price"]').first().attr('content')
+    const price = $('meta[itemprop="price"]').first().attr('content')
 
-    image = (jsData?.images[0]?.url || '').split('?')[0]
+    const image = (jsData?.images[0]?.url || '').split('?')[0]
 
     return { name, price, image }
   }

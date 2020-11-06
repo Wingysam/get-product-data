@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 const { og } = require('../util')
 
@@ -31,18 +33,17 @@ module.exports = {
     }
   ],
   async getter (url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    let name, price, image
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
 
-    name = $('.title.product-field').first().text().trim()
+    let name = $('.title.product-field').first().text().trim()
     if (!name) name = og($, 'title')
 
-    price = og($, 'price:amount', 'price')
-    image = og($, 'image:secure_url', 'image')
+    const price = og($, 'price:amount', 'price')
+    const image = og($, 'image:secure_url', 'image')
 
     return { name, price, image }
   }

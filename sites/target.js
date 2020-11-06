@@ -1,6 +1,8 @@
-const HttpsProxyAgent = require('https-proxy-agent');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
+const { URL } = require('url')
+
+const cheerio = require('cheerio')
+const HttpsProxyAgent = require('https-proxy-agent')
+const fetch = require('node-fetch')
 
 const { og } = require('../util')
 
@@ -11,7 +13,7 @@ module.exports = {
   ],
   testCases: [
     {
-      name: "Disney Gift Card eGift (Email Delivery)",
+      name: 'Disney Gift Card eGift (Email Delivery)',
       image: 'https://target.scene7.com/is/image/Target/GUEST_c7c77bed-608c-402d-83c1-0fe945f3157b',
       url: 'https://www.target.com/p/disney-gift-card-egift-email-delivery/-/A-54191074'
     },
@@ -22,19 +24,18 @@ module.exports = {
     }
   ],
   async getter (url, proxy) {
-    const options = {};
-    if (proxy) options.agent = new HttpsProxyAgent(require('url').parse(proxy));
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`);
-    const $ = cheerio.load(await res.text());
-    let name, price, image
+    const options = {}
+    if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
+    const res = await fetch(url, options)
+    if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
+    const $ = cheerio.load(await res.text())
 
-    name = $('[data-test="product-title"]').text();
+    const name = $('[data-test="product-title"]').text()
 
     // TODO: implement price
-    price = undefined
+    const price = undefined
 
-    image = 'https:' + og($, 'image')
+    const image = 'https:' + og($, 'image')
 
     return { name, price, image }
   }

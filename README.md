@@ -24,6 +24,7 @@ main();
 * Bing - Shopping
 * Christmas Tree Stops & That!
 * eBay
+* Etsy
 * GameStop
 * GOAT
 * Google Shopping

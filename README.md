@@ -46,3 +46,4 @@ These sites have been considered, but not implemented.
 Site | Reason
 ---- | ------
 K-Mart, Sears (Same site) | Requires complicated series of requests to extract data
+Nordstrom | Couldn't extract data, please open a PR if you can make it work

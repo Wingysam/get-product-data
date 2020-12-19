@@ -1,14 +1,31 @@
 /**
+ * Create meta tag grabber
+ * @param {*} $ Cheerio instance
+ * @returns {Function} meta tag grabber
+ */
+module.exports.metaFactory = $ => {
+  /**
+   * Searches for meta tags with property names
+   * @param  {...string} properties Properties to search for
+   */
+  function meta (...properties) {
+    for (const key of properties) {
+      const meta = $(`meta[property="${key}"]`)
+      if (!meta.length) continue
+      return meta.first().attr('content')
+    }
+  }
+
+  return meta
+}
+
+/**
  * Get OpenGraph data
  * @param {*} $ Cheerio instance
  * @param  {...string} keys NOT SANITIZED
  */
 module.exports.og = ($, ...keys) => {
-  for (const key of keys) {
-    const meta = $(`meta[property="og:${key}"]`)
-    if (!meta.length) continue
-    return meta.first().attr('content')
-  }
+  return this.metaFactory($)(...keys)
 }
 
 /**

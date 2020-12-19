@@ -25,7 +25,9 @@ module.exports.metaFactory = $ => {
  * @param  {...string} keys NOT SANITIZED
  */
 module.exports.og = ($, ...keys) => {
-  return this.metaFactory($)(...keys)
+  return this.metaFactory($)(
+    ...keys.map(key => 'og:' + key)
+  )
 }
 
 /**

@@ -43,6 +43,8 @@ main();
 * Teespring
 * Walmart
 * Wish
+* Zappos
+* Zazzle
 
 # *Not* Supported Sites
 These sites have been considered, but not implemented.

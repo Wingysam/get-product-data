@@ -1,3 +1,4 @@
+const fs = require('fs').promises
 const { URL } = require('url')
 
 const cheerio = require('cheerio')
@@ -89,6 +90,7 @@ module.exports = {
     const res = await fetch(url, options)
     if (!res.ok) throw new Error(`Res not ok. Status: ${res.status} ${res.statusText}`)
     const html = await res.text()
+    if (process.env.GPD_AMAZON_HTML) await fs.writeFile(process.env.GPD_AMAZON_HTML, html)
     let name, price, image
     const $ = cheerio.load(html)
 

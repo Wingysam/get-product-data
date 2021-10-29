@@ -129,7 +129,7 @@ module.exports = {
     } catch (_) {}
 
     // I think Amazon uses RNG or something to decide if you get a CAPTCHA.
-    if ($('form[action="/errors/validateCaptcha"]').length) return this.getter(url, proxy)
+    if ($('form[action="/errors/validateCaptcha"]').length) return module.exports.getter(url, proxy)
 
     if (!name) name = undefined
     if (!price) price = undefined

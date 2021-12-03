@@ -6,7 +6,7 @@
     "node-fetch": "^2.3.0"
   },
   "name": "get-product-name",
-  "version": "1.16.3",
+  "version": "1.17.0",
   "description": "Get a product's name from its URL",
   "scripts": {
     "lint": "eslint .",

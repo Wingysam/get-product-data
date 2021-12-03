@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha --bail",
-    "testfor": "mocha --bail --grep"
+    "testfor": "mocha --grep"
   },
   "main": "index.js",
   "repository": "https://gitlab.com/wingysam/get-product-name",

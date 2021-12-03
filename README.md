@@ -22,10 +22,13 @@ main();
 # Supported Sites
 * AliExpress
 * Amazon
+* Apple
+* Banggood
 * Bergdorf Goodman
 * Best Buy
 * Bing - Shopping
-* Christmas Tree Stops & That!
+* bol.com
+* Christmas Tree Shops & That!
 * eBay
 * Etsy
 * GameStop
@@ -53,3 +56,6 @@ Site | Reason
 ---- | ------
 K-Mart, Sears (Same site) | Requires complicated series of requests to extract data
 Nordstrom | Couldn't extract data, please open a PR if you can make it work
+
+# Contributors
+Thanks to @NicolaiVdS for adding support for Banggood and bol.com!

@@ -17,17 +17,17 @@ module.exports = {
       url: 'https://www.bol.com/be/nl/p/otronic-18650-batterijhouder-dubbel/9300000039572096/?s2a='
     },
     {
-        name: 'Logitech MX Keys - Draadloos toetsenbord met verlichting - QWERTY',
-        price: '€94,90',
-        image: 'https://media.s-bol.com/L9ZQ4Pv2Y464/168x81.jpg',
-        url: 'https://www.bol.com/be/nl/p/logitech-mx-keys-draadloos-toetsenbord-met-verlichting-qwerty/9200000118468088/?bltgh=kT--w1KRY83K8Ev4Sj1DHQ.2_19.22.ProductImage'
+      name: 'Logitech MX Keys - Draadloos toetsenbord met verlichting - QWERTY',
+      price: '€94,90',
+      image: 'https://media.s-bol.com/L9ZQ4Pv2Y464/168x81.jpg',
+      url: 'https://www.bol.com/be/nl/p/logitech-mx-keys-draadloos-toetsenbord-met-verlichting-qwerty/9200000118468088/?bltgh=kT--w1KRY83K8Ev4Sj1DHQ.2_19.22.ProductImage'
     }
   ],
   async getter (url, proxy) {
     const options = {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36'
-        }
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36'
+      }
     }
     if (proxy) options.agent = new HttpsProxyAgent(new URL(proxy))
     const res = await fetch(url, options)
@@ -41,7 +41,9 @@ module.exports = {
 
     if (!name) name = data.name
 
-    if (!price) price = `€${data.offers[0].price}`
+    // Original MR used this as an array, maybe it's an array only when there are multiple?
+    const offer = data.offers?.price ?? data.offers[0]?.price
+    if (!price) price = offer ? `€${offer}` : 'No offers found'
 
     if (!image) image = data.image.url
 

@@ -1,4 +1,4 @@
-# get-product-name
+# get-product-data
 ![NPM Stats](https://nodei.co/npm/get-product-name.png?downloads=true&downloadRank=true&stars=true)
 
 ```js
@@ -56,6 +56,7 @@ Site | Reason
 ---- | ------
 K-Mart, Sears (Same site) | Requires complicated series of requests to extract data
 Nordstrom | Couldn't extract data, please open a PR if you can make it work
+ebgames.com.au | Couldn't extract data without a twitter proxy. Decided to not implement this to keep complexity in check.
 
 # Contributors
 Thanks to @NicolaiVdS for adding support for Banggood and bol.com!

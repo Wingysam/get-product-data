@@ -7,14 +7,14 @@
   },
   "name": "get-product-name",
   "version": "1.17.1",
-  "description": "Get a product's name from its URL",
+  "description": "Get a product's data from its URL",
   "scripts": {
     "lint": "eslint .",
     "test": "mocha --bail",
     "testfor": "mocha --grep"
   },
   "main": "index.js",
-  "repository": "https://gitlab.com/wingysam/get-product-name",
+  "repository": "https://github.com/Wingysam/get-product-data",
   "author": "Wingysam",
   "license": "MIT",
   "private": false,

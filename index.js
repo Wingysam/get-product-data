@@ -15,11 +15,9 @@ async function fetchData (getter, url, proxy, timeout = 10000) {
 }
 
 module.exports = async (url, proxy, timeout) => {
-  for (let i = 0; i < sites.length; i++) {
-    for (let j = 0; j < sites[i].URLs.length; j++) {
-      if (sites[i].URLs[j].test(url)) {
-        return fetchData(sites[i].getter, url, proxy, timeout)
-      }
+  for (const site of sites) {
+    for (const regex of site.URLs) {
+      if (regex.test(url)) return fetchData(site.getter, url, proxy, timeout)
     }
   }
   return fetchData(require('./sites/_generic').getter, url, proxy)

@@ -37,6 +37,7 @@ main();
 * IKEA
 * Kitchen & Company
 * Kohl's
+* Lowes
 * Macy's
 * Neiman Marcus
 * Newegg

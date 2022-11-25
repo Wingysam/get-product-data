@@ -34,6 +34,7 @@ main();
 * GameStop
 * GOAT
 * Google Shopping
+* The Home Depot
 * IKEA
 * Kitchen & Company
 * Kohl's

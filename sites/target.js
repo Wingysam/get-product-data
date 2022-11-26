@@ -35,7 +35,7 @@ module.exports = {
     // TODO: implement price
     const price = undefined
 
-    const image = 'https:' + og($, 'image')
+    const image = og($, 'image')
 
     return { name, price, image }
   }

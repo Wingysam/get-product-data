@@ -37,9 +37,9 @@ module.exports = {
     const html = await res.text()
     const $ = cheerio.load(html)
 
-    const name = $('h1.prod-ProductTitle').attr('content')
+    const name = $('h1#main-title').first().text()
 
-    const price = $('.price > :first-child').first().text()
+    const price = $('span[itemprop=price]').first().text()
 
     const image = og($, 'image')
 

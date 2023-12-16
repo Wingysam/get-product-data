@@ -24,3 +24,5 @@ module.exports = async (url, proxy, timeout) => {
 }
 
 module.exports.sites = sites
+
+module.exports.version = require('./package.json').version

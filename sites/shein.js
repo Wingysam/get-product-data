@@ -14,7 +14,7 @@ module.exports = {
   testCases: [
     {
       name: 'SHEIN Manfinity Homme Men Solid Color Basic Turndown Collar Front Button Short Sleeve Simple Polo Shirt, Casual Everyday Wear For Husband For Going Out',
-      price: '$13.49',
+      price: '13.49 USD',
       image: 'https://img.ltwebstatic.com/images3_pi/2024/06/07/27/17177785943f6cea5ee00ba54f7aabb9b3a94f6fe6_thumbnail_720x.webp',
       url: 'https://us.shein.com/Manfinity-Homme-Men-Solid-Color-Basic-Turndown-Collar-Front-Button-Short-Sleeve-Simple-Polo-Shirt-Casual-Everyday-Wear-For-Husband-For-Going-Out-p-39232859.html'
     }
@@ -42,11 +42,9 @@ module.exports = {
     let price = meta('og:price:amount', 'product:price:amount')
     if (!price) price = meta('product:price')
     const currency = meta('og:price:currency', 'product:price:currency')
-    if (price && currency) price = `${currency}${price}`
-    else if (price && !price.startsWith('$') && !price.startsWith('€') && !price.startsWith('£')) price = `$${price}`
+    if (price && currency) price = `${price} ${currency}`
 
-    let image = meta('og:image')
-    if (!image) image = $('meta[property="og:image"]').attr('content')
+    const image = meta('og:image')
 
     return { name, price, image }
   }

@@ -12,10 +12,6 @@ jobs:
     permissions:
       contents: read
 
-    strategy:
-      matrix:
-        node-version: [18, 20, 22]
-
     steps:
       - uses: actions/checkout@v4
 
@@ -24,10 +20,10 @@ jobs:
         with:
           version: 9
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
           cache: 'pnpm'
 
       - name: Install dependencies

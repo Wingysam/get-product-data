@@ -1,0 +1,63 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run linting
+        run: pnpm run lint
+
+      - name: Get changed site files
+        id: changed-sites
+        run: |
+          # Get changed site files (excluding internal files starting with _)
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'sites/*.js' | grep -v '^sites/_' || true)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          
+          # Extract site names from the changed files using Node.js
+          SITE_NAMES=$(echo "$CHANGED_FILES" | while read file; do
+            if [ -f "$file" ]; then
+              node -e "console.log(require('./$file').name)"
+            fi
+          done | paste -sd '|' -)
+          
+          echo "pattern=$SITE_NAMES" >> $GITHUB_OUTPUT
+
+      - name: Run tests for changed sites
+        if: steps.changed-sites.outputs.has_changes == 'true'
+        run: pnpm run test -- --grep "${{ steps.changed-sites.outputs.pattern }}"
+
+      - name: Skip tests (no site changes)
+        if: steps.changed-sites.outputs.has_changes == 'false'
+        run: echo "No site files changed, skipping tests"
